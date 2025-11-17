@@ -1,0 +1,15 @@
+Resources:
+  TodosTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: t_todos
+      AttributeDefinitions:
+      - AttributeName: id_todo
+        AttributeType: S
+      KeySchema:
+      - AttributeName: id_todo
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      BillingMode: PROVISIONED

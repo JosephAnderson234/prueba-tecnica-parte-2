@@ -1,0 +1,28 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: hackutec
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: todoapp
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: parte2
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  iam:
+    role: arn:aws:iam::331315825646:role/LabRole
+
+functions:
+  hello:
+    handler: functions/get_todoHandler.getHandler
+    events:
+    - http:
+        path: /todos
+        method: get
+        cors: true
+        integration: lambda
+
+resources:
+- ${file(./resources/dynamodb-tables.yml)}
+
+custom:
+  stage: ${sls:stage}
