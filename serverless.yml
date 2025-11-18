@@ -10,18 +10,18 @@ provider:
 
 functions:
   hello:
-    handler: functions/todoHandler.handler
+    handler: dist/todoHandler.handler
     events:
     - http:
         path: /todos
         method: get
         cors: true
-        integration: lambda
+        integration: lambda-proxy
     - http:
         path: /todos
         method: post
         cors: true
-        integration: lambda
+        integration: lambda-proxy
 
 resources:
 - ${file(./resources/dynamodb-tables.yml)}

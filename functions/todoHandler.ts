@@ -9,7 +9,7 @@ const client = new DynamoDBClient({});
 const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 	try {
 		const method = event.httpMethod;
-
+		console.log("Received method:", method);
 		if (method === "GET") {
 			const command = new ScanCommand({
 				TableName: TABLE_NAME,
@@ -47,7 +47,7 @@ const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 			}
 
 			const item = {
-				id: uuid(),
+				id_todo: uuid(),
 				titulo: data.titulo,
 				completada: false,
 			};
@@ -55,7 +55,7 @@ const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 			const putCommand = new PutItemCommand({
 				TableName: TABLE_NAME,
 				Item: {
-					id: { S: item.id },
+					id_todo: { S: item.id_todo },
 					titulo: { S: item.titulo },
 					completada: { BOOL: item.completada },
 				},
