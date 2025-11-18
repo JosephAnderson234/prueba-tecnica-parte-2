@@ -2,7 +2,7 @@ Resources:
   TodosTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: t_todos
+      TableName: ${self:provider.environment.TABLE_NAME}
       AttributeDefinitions:
       - AttributeName: id_todo
         AttributeType: S

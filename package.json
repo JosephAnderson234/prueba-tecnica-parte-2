@@ -1,0 +1,19 @@
+{
+	"name": "todo-api",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "tsc",
+		"deploy": "serverless deploy"
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.470.0",
+		"uuid": "^9.0.0"
+	},
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.122",
+		"@types/uuid": "^10.0.0",
+		"serverless": "^3.38.0",
+		"serverless-plugin-typescript": "^2.1.4",
+		"typescript": "^5.4.0"
+	}
+}
